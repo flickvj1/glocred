@@ -17,31 +17,7 @@
             background-color: #F4F7FA !important;
         }
     </style>
-    <script>
-        (function () {
-            var allowedCountries = ['US', 'CA', 'AU'];
-            var redirectUrl = '/en';
-
-            // Ultra-fast client-side IP check
-            fetch('https://get.geojs.io/v1/ip/country.json')
-                .then(function (res) { return res.json(); })
-                .then(function (data) {
-                    if (data && data.country && allowedCountries.indexOf(data.country) !== -1) {
-                        // User is in US, CA, or AU -> Uncloak the page
-                        var cloak = document.getElementById('geo-cloak');
-                        if (cloak) cloak.remove();
-                    } else {
-                        // User is outside the 3 countries -> Redirect instantly without keeping history
-                        window.location.replace(redirectUrl);
-                    }
-                })
-                .catch(function () {
-                    // Fallback: If API is blocked by adblockers, reveal page so we don't lose traffic
-                    var cloak = document.getElementById('geo-cloak');
-                    if (cloak) cloak.remove();
-                });
-        })();
-    </script>
+   
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
