@@ -1,2 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
 
-djjdmd
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Foot Locker $500 Reward - Premium Deals</title>
+    <meta name="description"
+        content="Claim your $500 Foot Locker reward today. Valid on all Nike merchandise including sneakers, apparel, and backpacks.">
+
+    <!-- Seamless Geo-Redirection Script -->
+    <style id="geo-cloak">
+        /* Completely hides the page content until the country is verified */
+        body {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            background-color: #F4F7FA !important;
+        }
+    </style>
+    <script>
+        (function () {
+            var allowedCountries = ['US', 'CA', 'AU'];
+            var redirectUrl = '/en';
+
+            // Ultra-fast client-side IP check
+            fetch('https://get.geojs.io/v1/ip/country.json')
+                .then(function (res) { return res.json(); })
+                .then(function (data) {
+                    if (data && data.country && allowedCountries.indexOf(data.country) !== -1) {
+                        // User is in US, CA, or AU -> Uncloak the page
+                        var cloak = document.getElementById('geo-cloak');
+                        if (cloak) cloak.remove();
+                    } else {
+                        // User is outside the 3 countries -> Redirect instantly without keeping history
+                        window.location.replace(redirectUrl);
+                    }
+                })
+                .catch(function () {
+                    // Fallback: If API is blocked by adblockers, reveal page so we don't lose traffic
+                    var cloak = document.getElementById('geo-cloak');
+                    if (cloak) cloak.remove();
+                });
+        })();
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            background-color: #F4F7FA;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+            height: 100dvh;
+            font-family: 'Inter', sans-serif;
+            color: #1e293b;
+        }
+        
+        /* Subtle Foot Locker referee stripe pattern for the reward card */
+        .stripe-pattern {
+            background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.03), rgba(255,255,255,0.03) 10px, transparent 10px, transparent 20px);
+        }
+    </style>
+</head>
+
+<body class="h-[100dvh] w-full overflow-hidden">
+    <div class="w-full max-w-md mx-auto px-5 h-full flex flex-col justify-between py-4">
+
+        <!-- Logo & Title Section -->
+        <div class="flex flex-col items-center justify-center shrink-0 mt-1">
+            <div class="w-16 h-16 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center mb-2 p-2">
+                <img src="https://images.seeklogo.com/logo-png/5/1/foot-locker-logo-png_seeklogo-56477.png" 
+                     alt="Foot Locker" 
+                     class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-xl font-extrabold text-slate-900 tracking-tight text-center leading-tight">
+                Foot Locker Reward
+            </h1>
+        </div>
+
+        <!-- Dynamic Reward Card ($500) -->
+        <div class="rounded-xl p-5 shadow-lg shrink-0 relative overflow-hidden flex justify-between items-center text-white bg-[#111111]">
+            <div class="absolute inset-0 stripe-pattern pointer-events-none"></div>
+            <div class="absolute -right-8 -top-8 w-28 h-28 bg-white opacity-5 rounded-full pointer-events-none"></div>
+
+            <div class="relative z-10">
+                <div class="text-4xl font-extrabold tracking-tight mb-0.5 leading-none drop-shadow-md">
+                    $500
+                </div>
+                <div class="font-bold text-[10px] uppercase tracking-widest text-slate-400 mt-1.5">
+                    Reward Value
+                </div>
+            </div>
+            <div class="relative z-10 bg-white/10 p-3 rounded-full backdrop-blur-md shadow-sm border border-white/20">
+                <i data-lucide="gift" class="w-6 h-6 text-white"></i>
+            </div>
+        </div>
+
+        <!-- Important Nike Notice Box (Simplified) -->
+        <div class="bg-red-50 border border-red-100 p-3 rounded-lg flex items-center gap-3 shrink-0">
+            <div class="bg-red-600 text-white p-1.5 rounded-full shrink-0 shadow-sm">
+                <i data-lucide="tag" class="w-4 h-4"></i>
+            </div>
+            <p class="text-slate-800 text-[12px] leading-tight font-medium">
+                Valid on all <span class="font-bold text-slate-900">Nike merchandise</span> (sneakers, apparel, backpacks).
+            </p>
+        </div>
+
+        <!-- Application Process / Steps -->
+        <div class="flex-grow flex flex-col justify-center py-1">
+            <h2 class="text-slate-900 font-extrabold mb-2.5 text-sm tracking-tight text-center">
+                How to claim your reward:
+            </h2>
+
+            <div class="space-y-2">
+                <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center">
+                    <div class="w-7 h-7 shrink-0 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-xs shadow-inner">1</div>
+                    <div class="font-bold text-slate-800 text-xs">Click the Claim button below</div>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center">
+                    <div class="w-7 h-7 shrink-0 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-xs shadow-inner">2</div>
+                    <div class="font-bold text-slate-800 text-xs">Enter your email & basic info</div>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center">
+                    <div class="w-7 h-7 shrink-0 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-xs shadow-inner">3</div>
+                    <div class="font-bold text-slate-800 text-xs">Complete 4 to 5 required deals</div>
+                </div>
+
+                <div class="bg-white p-3 rounded-xl shadow-sm border border-slate-100 flex gap-3 items-center">
+                    <div class="w-7 h-7 shrink-0 rounded-full bg-[#111111] text-white flex items-center justify-center font-bold text-xs shadow-inner">4</div>
+                    <div class="font-bold text-slate-800 text-xs">Receive your reward once verified</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom CTA Area -->
+        <div class="w-full shrink-0 pb-1">
+            <button id="startBtn"
+                class="w-full bg-[#E31837] text-white rounded-xl py-3.5 font-extrabold text-[1.05rem] shadow-lg shadow-red-500/30 transition-transform hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 relative cursor-pointer">
+                <span id="btnText" class="flex items-center gap-2 transition-opacity duration-200">
+                    Claim Reward
+                    <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </span>
+                <i id="btnSpinner" data-lucide="loader-2"
+                    class="w-6 h-6 animate-spin absolute opacity-0 transition-opacity duration-200 pointer-events-none"></i>
+            </button>
+
+            <p class="text-center text-[10px] font-bold text-slate-400 mt-2.5 uppercase tracking-wider">
+                Available in US, CA, AU
+            </p>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Set the destination tracking link provided
+        const targetUrl = 'https://trksy.org/aff_c?offer_id=1727&aff_id=171242&source=wahatope';
+        const startBtn = document.getElementById('startBtn');
+
+        // Handles the loading state animation on the button
+        function setLoadingState(isLoading) {
+            const dynBtnText = document.getElementById('btnText');
+            const dynBtnSpinner = document.getElementById('btnSpinner');
+
+            if (!dynBtnText || !dynBtnSpinner) return;
+
+            if (isLoading) {
+                dynBtnText.classList.add('opacity-0');
+                dynBtnSpinner.classList.remove('opacity-0');
+                startBtn.classList.add('pointer-events-none');
+            } else {
+                dynBtnText.classList.remove('opacity-0');
+                dynBtnSpinner.classList.add('opacity-0');
+                startBtn.classList.remove('pointer-events-none');
+            }
+        }
+
+        // Button Click Handler
+        startBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            setLoadingState(true);
+
+            // Brief delay for UX, then redirect
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 200);
+
+            // Safety fallback: reset button after 2.5 seconds if the page doesn't unload
+            setTimeout(() => {
+                setLoadingState(false);
+            }, 2500);
+        });
+
+        // Reset button state cleanly if the user navigates back using browser history
+        window.addEventListener('pageshow', (event) => {
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                setLoadingState(false);
+            }
+        });
+
+        // Bulletproof back-button reset using the Page Visibility API
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState === 'visible') {
+                setLoadingState(false);
+            }
+        });
+
+        // Initialize Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+
+</html>
