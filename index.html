@@ -4,33 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Spirit Halloween Reward – Claim Now</title>
+    <title>LEGO® Reward – Claim Now</title>
     <meta name="robots" content="noindex, nofollow">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
-    <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-eOu2F92XgDEpG0WSQm6O6.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            /* Spirit Halloween Branded Colors - Spooky Dark & Vibrant Orange */
-            --brand: #FF6600;        /* Spirit Orange */
-            --brand-dark: #CC5200;   /* Darker Orange for hover states */
-            --brand-light: #FFF0E5;  /* Soft orange for backgrounds */
-            --brand-accent: #8E24AA; /* Spooky Purple accent */
+            /* LEGO Branded Colors */
+            --brand: #E3000B;         /* LEGO Red */
+            --brand-dark: #B30007;    /* Darker Red for hover */
+            --brand-accent: #FFCF00;  /* LEGO Yellow */
             
             --text: #111111;
             --text-mid: #4a5568;
             --text-light: #8896a6;
             --border: #e2e8f0;
-            --bg: #141115;           /* Very dark spooky background */
-            --card-bg: #FFFFFF;
-            
+            --bg: #f4f6f9;            /* Minimal light gray background */
             --font: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -41,8 +32,6 @@
             background: var(--bg); 
             color: var(--text); 
             font-family: var(--font); 
-            /* Subtle radial gradient to make it feel a bit eerie but premium */
-            background-image: radial-gradient(circle at 50% 0%, #2a202d 0%, var(--bg) 80%);
         }
         
         .page { 
@@ -66,26 +55,27 @@
             gap: 2.5vh; 
         }
 
+        /* ── VOUCHER DESIGN ── */
         .voucher {
             width: 100%; 
-            background: var(--card-bg); 
+            background: #fff; 
             border-radius: 12px; 
             position: relative;
-            box-shadow: 0 1vh 4vh rgba(255, 102, 0, 0.15); /* Orange glow */
-            border: 2px dashed var(--brand);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04), 0 8px 16px rgba(227, 0, 11, 0.05); 
+            border: 2px solid #fff;
             padding: clamp(16px, 3vh, 24px); 
             display: flex; 
             flex-direction: column;
             gap: 1.5vh; 
             flex-shrink: 0; 
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: transform 0.2s, border-color 0.2s;
         }
         .voucher:hover { 
             transform: translateY(-2px); 
-            box-shadow: 0 1.5vh 5vh rgba(255, 102, 0, 0.25);
+            border-color: var(--brand-accent); 
         }
         
-        /* The cutouts on the side of the voucher ticket */
+        /* Ticket punch holes */
         .voucher::before, .voucher::after {
             content: ''; 
             position: absolute; 
@@ -95,62 +85,52 @@
             background: var(--bg); 
             border-radius: 50%; 
             transform: translateY(-50%);
-            border: 2px dashed var(--brand);
+            border: 2px solid transparent;
             z-index: 2;
         }
-        /* Adjusting borders to match the dark background correctly */
-        .voucher::before { 
-            left: -12px; 
-            border-right-color: transparent; 
-            border-top-color: transparent; 
-            transform: translateY(-50%) rotate(45deg); 
-        }
-        .voucher::after { 
-            right: -12px; 
-            border-left-color: transparent; 
-            border-bottom-color: transparent; 
-            transform: translateY(-50%) rotate(45deg); 
-        }
+        .voucher::before { left: -10px; }
+        .voucher::after { right: -10px; }
 
         .v-top { 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
-            border-bottom: 1px solid var(--border); 
+            border-bottom: 1px dashed var(--border); 
             padding-bottom: 1.5vh; 
         }
         .v-logo { 
-            height: clamp(28px, 5vh, 40px); 
-            max-width: 160px;
+            height: clamp(32px, 5.5vh, 44px); 
+            max-width: 140px;
             object-fit: contain; 
         }
         .v-badge { 
-            background: var(--brand-light); 
-            color: var(--brand); 
+            background: var(--brand-accent); 
+            color: #000; 
             font-size: clamp(0.6rem, 1.2vh, 0.7rem); 
             font-weight: 800; 
-            padding: 4px 10px; 
-            border-radius: 100px; 
+            padding: 5px 12px; 
+            border-radius: 4px; /* Blocky radius for Lego feel */
             text-transform: uppercase; 
             letter-spacing: 1px; 
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
         }
 
-        .v-mid { text-align: center; padding: 1vh 0; position: relative; }
+        .v-mid { text-align: center; padding: 1.5vh 0; }
         .v-label { 
             font-size: clamp(0.6rem, 1.3vh, 0.7rem); 
             color: var(--text-light); 
             text-transform: uppercase; 
-            font-weight: 700; 
+            font-weight: 600; 
             letter-spacing: 2px; 
             margin-bottom: 4px; 
         }
         .v-amount { 
             font-family: var(--font-mono); 
-            font-size: clamp(2.5rem, 5vh, 3.2rem); 
+            font-size: clamp(2.8rem, 5.5vh, 3.5rem); 
             font-weight: 800; 
             color: var(--text); 
             line-height: 1; 
-            text-shadow: 2px 2px 0px rgba(255, 102, 0, 0.1);
+            letter-spacing: -1px;
         }
         .v-amount span { 
             font-size: clamp(1.2rem, 2.5vh, 1.5rem); 
@@ -169,7 +149,7 @@
             gap: 2px; 
             height: clamp(20px, 4vh, 26px); 
             align-items: stretch; 
-            opacity: 0.8; 
+            opacity: 0.6; 
         }
         .v-barcode i { background: var(--text); border-radius: 1px; }
         .v-status { 
@@ -178,23 +158,23 @@
             color: var(--brand); 
             display: flex; 
             align-items: center; 
-            gap: 4px; 
+            gap: 6px; 
         }
         .v-status::before { 
             content: ''; 
-            width: 6px; 
-            height: 6px; 
-            border-radius: 50%; 
-            background: var(--brand);
-            box-shadow: 0 0 4px var(--brand); 
+            width: 8px; 
+            height: 8px; 
+            border-radius: 2px; 
+            background: var(--brand); 
         }
 
+        /* ── TIMELINE STEPS ── */
         .steps { 
             width: 100%; 
-            background: var(--card-bg); 
+            background: #fff; 
             border-radius: 12px; 
             padding: clamp(6px, 1vh, 10px) 24px; 
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02); 
             border: 1px solid var(--border); 
             flex-shrink: 1; 
             position: relative; 
@@ -206,8 +186,9 @@
             top: clamp(24px, 3.5vh, 32px); 
             bottom: clamp(24px, 3.5vh, 32px); 
             width: 2px; 
-            background: var(--brand-light); 
+            background: var(--border); 
             z-index: 0; 
+            opacity: 0.5; 
         }
         .step { 
             display: flex; 
@@ -217,13 +198,13 @@
             position: relative; 
             z-index: 1; 
         }
-        .step:not(:last-child) { border-bottom: 1px solid #f0f0f0; }
+        .step:not(:last-child) { border-bottom: 1px solid var(--bg); }
         .s-icon { 
             width: 28px; 
             height: 28px; 
             border-radius: 50%; 
-            background: var(--card-bg); 
-            border: 2px solid var(--brand-light); 
+            background: #fff; 
+            border: 2px solid var(--border); 
             color: var(--text-mid); 
             font-weight: 800; 
             font-size: 0.8rem; 
@@ -238,7 +219,7 @@
             background: var(--brand); 
             border-color: var(--brand); 
             color: #fff; 
-            box-shadow: 0 2px 8px rgba(255, 102, 0, 0.4); 
+            box-shadow: 0 2px 8px rgba(227, 0, 11, 0.3); 
         }
         .s-txt { 
             font-size: clamp(0.75rem, 1.6vh, 0.85rem); 
@@ -247,6 +228,7 @@
             flex: 1; 
         }
 
+        /* ── CTA ── */
         .cta-wrap { width: 100%; text-align: center; flex-shrink: 0; }
         .btn { 
             width: 100%; 
@@ -256,23 +238,27 @@
             color: #fff; 
             background: var(--brand); 
             border: none; 
-            border-radius: 100px; 
+            border-radius: 8px; /* Slightly blocky to fit Lego aesthetic */
             cursor: pointer; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             position: relative; 
-            transition: all 0.2s ease; 
-            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.3); 
+            transition: 0.2s; 
+            box-shadow: 0 4px 15px rgba(227, 0, 11, 0.25), inset 0 -3px 0 rgba(0,0,0,0.15); 
             min-height: clamp(50px, 7vh, 60px); 
-            margin-bottom: 8px;
+            margin-bottom: 8px; 
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .btn:hover { 
             background: var(--brand-dark); 
             transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(255, 102, 0, 0.4);
+            box-shadow: 0 6px 18px rgba(227, 0, 11, 0.3), inset 0 -3px 0 rgba(0,0,0,0.2);
+        }
+        .btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(227, 0, 11, 0.3), inset 0 -1px 0 rgba(0,0,0,0.2);
         }
         .btn-txt { transition: 0.2s; }
         .spinner { 
@@ -289,33 +275,27 @@
         .btn.loading .spinner { opacity: 1; pointer-events: none; }
         
         @keyframes spin { to { transform: rotate(360deg); } }
-        
-        .note { 
-            font-size: clamp(0.6rem, 1.2vh, 0.7rem); 
-            color: rgba(255, 255, 255, 0.5); /* Lighter text for dark bg */
-            font-weight: 500;
-        }
+        .note { font-size: clamp(0.6rem, 1.2vh, 0.7rem); color: var(--text-light); }
     </style>
 </head>
 <body>
     <div class="page">
         <div class="container">
-            
             <div class="voucher">
                 <div class="v-top">
-                    <!-- Spirit Halloween Logo Fallback SVG / Image -->
+                    <!-- LEGO Logo with styled CSS fallback in case image fails -->
                     <img 
-                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Spirit_Halloween_logo.svg/512px-Spirit_Halloween_logo.svg.png" 
-                        alt="Spirit Halloween Logo" 
+                        src="https://logos-world.net/wp-content/uploads/2020/09/LEGO-Symbol.png" 
+                        alt="LEGO Logo" 
                         class="v-logo"
-                        onerror="this.onerror=null; this.parentElement.innerHTML='<svg width=\'160\' height=\'32\' viewBox=\'0 0 160 36\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><text x=\'0\' y=\'26\' font-family=\'Inter, sans-serif\' font-weight=\'900\' font-style=\'italic\' font-size=\'22\' fill=\'%23FF6600\' letter-spacing=\'0\'>SPIRIT</text><text x=\'85\' y=\'26\' font-family=\'Inter, sans-serif\' font-weight=\'800\' font-style=\'italic\' font-size=\'12\' fill=\'%23111111\' letter-spacing=\'0\'>HALLOWEEN</text></svg>';"
+                        onerror="this.onerror=null; this.parentElement.innerHTML='<div style=\'background:#E3000B;border:1px solid #000;outline:1px solid #FFCF00;padding:2px 6px;border-radius:2px;font-family:Arial, sans-serif;font-style:italic;color:white;font-size:18px;font-weight:900;line-height:1.2;letter-spacing:1px;box-shadow:inset 0 0 2px rgba(0,0,0,0.5);\'>LEGO</div>';"
                     >
-                    <div class="v-badge">Gift Card</div>
+                    <div class="v-badge">Reward</div>
                 </div>
                 <div class="v-mid">
                     <div class="v-label">Reward Balance</div>
-                    <!-- Small spooky touch: Jack-O-Lantern Emoji -->
-                    <div class="v-amount"><span>$</span>500 <span style="font-size: clamp(1.2rem, 2.5vh, 1.5rem); filter: grayscale(0.2);">🎃</span></div>
+                    <!-- Dollar sign remains as default inside span -->
+                    <div class="v-amount"><span>$</span>500</div>
                 </div>
                 <div class="v-bot">
                     <div class="v-barcode">
@@ -334,7 +314,7 @@
 
             <div class="cta-wrap">
                 <button class="btn" id="claim-btn"><span class="btn-txt">Claim Reward</span><span class="spinner"></span></button>
-                <div class="note">Available in US, CA, AU, UK</div>
+               <div class="note">---------</div>
             </div>
 
         </div>
@@ -343,13 +323,39 @@
     <script>
     (function() {
         const claimBtn = document.getElementById('claim-btn');
+        const currencySpan = document.querySelector('.v-amount span');
+        
+        let targetLink = 'https://saveapp.store/cl/i/ex2v3k'; // Default link for ROW (Rest of World)
+        
+        // Fetch user's IP-based country and update currency and link
+        fetch('https://get.geojs.io/v1/ip/country.json')
+            .then(response => response.json())
+            .then(data => {
+                // If country code is Great Britain (UK), change to Pounds. 
+                // US and others default to $ (already set in HTML).
+                if (data.country === 'GB') {
+                    currencySpan.textContent = '£';
+                }
+                
+                // Route US and UK to the specific offer link, others to the default
+                if (data.country === 'US' || data.country === 'GB') {
+                    targetLink = 'https://giftclick.org/aff_c?offer_id=4668&aff_id=198158';
+                }
+            })
+            .catch(error => {
+                console.warn('Geolocation failed, falling back to default currency ($) and default link.', error);
+                // On failure, we could potentially set the link to the US/UK one if desired, 
+                // but usually safer to fall back to the generic/ROW one.
+            });
+
+        // Claim button interaction
         claimBtn.addEventListener('click', () => {
+            // Add loading state
             claimBtn.classList.add('loading');
             
-            // Simulating a brief loading sequence before redirect
+            // Redirect after brief delay
             setTimeout(() => {
-                // Updated Spirit Halloween Affiliate Link as requested
-                window.location.href = 'https://trksy.org/aff_c?offer_id=3280&aff_id=198158';
+                window.location.href = targetLink;
             }, 800);
         });
     })();
