@@ -3,466 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Costco Shop Card Reward – Claim Now</title>
+    <title>Walmart Reward – Claim Now</title>
     <meta name="robots" content="noindex, nofollow">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        *, *::before, *::after { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-        }
-
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            /* Authentic Costco Color Palette */
-            --costco-red: #E31837;
-            --costco-red-dark: #BF0E29;
-            --costco-blue: #005EA6;
-            --costco-blue-dark: #004377;
-            --costco-blue-light: #EEF6FC;
-            --costco-red-light: #FDF0F2;
+            /* Updated 2025 Walmart Branded Colors (Vivid Blue & Spark Yellow context) */
+            --brand: #0157E9; 
+            --brand-dark: #003B99;
+            --brand-light: #EAF3FF;
             
-            --text: #0F172A;
-            --text-mid: #475569;
-            --text-light: #8C9CAB;
-            --border: #E2E8F0;
-            --bg: #F3F6F9;
-            --card-bg: #FFFFFF;
-            
-            --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            --text: #111111;
+            --text-mid: #4a5568;
+            --text-light: #8896a6;
+            --border: #e2e8f0;
+            --bg: #f8fafc;
+            --font: 'Inter', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
-        html, body {
-            height: 100dvh;
-            overflow: hidden;
-            background: var(--bg);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 94, 166, 0.04) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(227, 24, 55, 0.04) 0%, transparent 40%);
-            color: var(--text);
-            font-family: var(--font);
-            -webkit-font-smoothing: antialiased;
+        html, body { 
+            height: 100dvh; 
+            overflow: hidden; 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: var(--font); 
+        }
+        
+        .page { 
+            width: 100%; 
+            height: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            padding: 2vh 4vw; 
         }
 
-        .page {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2vh 4vw;
+        .container { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%; 
+            max-width: 380px; 
+            height: 100%; 
+            justify-content: center; 
+            gap: 2.5vh; 
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 400px;
-            height: 100%;
-            justify-content: center;
-            gap: 2.2vh;
-        }
-
+        /* ── VOUCHER DESIGN ── */
         .voucher {
-            width: 100%;
-            background: var(--card-bg);
-            border-radius: 16px;
+            width: 100%; 
+            background: #fff; 
+            border-radius: 12px; 
             position: relative;
-            box-shadow: 0 1.2vh 3.5vh rgba(0, 94, 166, 0.08), 0 0.4vh 1vh rgba(0, 0, 0, 0.03);
-            border: 2px dashed #CBD5E1;
-            padding: clamp(16px, 3vh, 24px);
-            display: flex;
+            box-shadow: 0 1vh 3vh rgba(1, 87, 233, 0.08); 
+            border: 2px dashed var(--border);
+            padding: clamp(16px, 3vh, 24px); 
+            display: flex; 
             flex-direction: column;
-            gap: 1.6vh;
-            flex-shrink: 0;
-            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s;
+            gap: 1.5vh; 
+            flex-shrink: 0; 
+            transition: transform 0.2s, border-color 0.2s;
         }
-
-        .voucher:hover {
-            transform: translateY(-2px);
-            border-color: #93C5FD;
-        }
-
-        /* Notched cutout edges */
+        .voucher:hover { transform: translateY(-2px); border-color: #93C5FD; }
+        
         .voucher::before, .voucher::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 22px;
-            height: 22px;
-            background: var(--bg);
-            border-radius: 50%;
-            border: 2px dashed #CBD5E1;
-            z-index: 10;
+            content: ''; 
+            position: absolute; 
+            top: 50%; 
+            width: 20px; 
+            height: 20px;
+            background: var(--bg); 
+            border-radius: 50%; 
+            transform: translateY(-50%);
+            border: 2px dashed var(--border);
+        }
+        .voucher::before { left: -12px; border-right-color: transparent; border-top-color: transparent; transform: translateY(-50%) rotate(45deg); }
+        .voucher::after { right: -12px; border-left-color: transparent; border-bottom-color: transparent; transform: translateY(-50%) rotate(45deg); }
+
+        .v-top { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 1.5vh; 
+        }
+        .v-logo { 
+            height: clamp(28px, 5vh, 40px); 
+            max-width: 140px;
+            object-fit: contain; 
+        }
+        .v-badge { 
+            background: var(--brand-light); 
+            color: var(--brand); 
+            font-size: clamp(0.6rem, 1.2vh, 0.7rem); 
+            font-weight: 700; 
+            padding: 4px 10px; 
+            border-radius: 100px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
         }
 
-        .voucher::before {
-            left: -13px;
-            border-right-color: transparent;
-            border-top-color: transparent;
-            transform: translateY(-50%) rotate(45deg);
+        .v-mid { text-align: center; padding: 1vh 0; }
+        .v-label { 
+            font-size: clamp(0.6rem, 1.3vh, 0.7rem); 
+            color: var(--text-light); 
+            text-transform: uppercase; 
+            font-weight: 600; 
+            letter-spacing: 2px; 
+            margin-bottom: 4px; 
+        }
+        .v-amount { 
+            font-family: var(--font-mono); 
+            font-size: clamp(2.5rem, 5vh, 3.2rem); 
+            font-weight: 800; 
+            color: var(--brand); 
+            line-height: 1; 
+        }
+        .v-amount span { 
+            font-size: clamp(1.2rem, 2.5vh, 1.5rem); 
+            vertical-align: text-top; 
         }
 
-        .voucher::after {
-            right: -13px;
-            border-left-color: transparent;
-            border-bottom-color: transparent;
-            transform: translateY(-50%) rotate(45deg);
+        .v-bot { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            padding-top: 1vh; 
+        }
+        .v-barcode { 
+            display: flex; 
+            gap: 2px; 
+            height: clamp(20px, 4vh, 26px); 
+            align-items: stretch; 
+            opacity: 0.6; 
+        }
+        .v-barcode i { background: var(--text); border-radius: 1px; }
+        .v-status { 
+            font-size: clamp(0.65rem, 1.3vh, 0.75rem); 
+            font-weight: 700; 
+            color: var(--brand); 
+            display: flex; 
+            align-items: center; 
+            gap: 4px; 
+        }
+        .v-status::before { 
+            content: ''; 
+            width: 6px; 
+            height: 6px; 
+            border-radius: 50%; 
+            background: var(--brand); 
         }
 
-        .v-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 1.4vh;
+        /* ── TIMELINE STEPS ── */
+        .steps { 
+            width: 100%; 
+            background: #fff; 
+            border-radius: 12px; 
+            padding: clamp(6px, 1vh, 10px) 24px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02); 
+            border: 1px solid var(--border); 
+            flex-shrink: 1; 
+            position: relative; 
+        }
+        .steps::before { 
+            content: ''; 
+            position: absolute; 
+            left: 37px; 
+            top: clamp(24px, 3.5vh, 32px); 
+            bottom: clamp(24px, 3.5vh, 32px); 
+            width: 2px; 
+            background: var(--border); 
+            z-index: 0; 
+            opacity: 0.5; 
+        }
+        .step { 
+            display: flex; 
+            align-items: center; 
+            gap: 16px; 
+            padding: clamp(12px, 2vh, 16px) 0; 
+            position: relative; 
+            z-index: 1; 
+        }
+        .step:not(:last-child) { border-bottom: 1px solid var(--bg); }
+        .s-icon { 
+            width: 28px; 
+            height: 28px; 
+            border-radius: 50%; 
+            background: #fff; 
+            border: 2px solid var(--border); 
+            color: var(--text-mid); 
+            font-weight: 800; 
+            font-size: 0.8rem; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-shrink: 0; 
+            transition: 0.2s; 
+            z-index: 2; 
+        }
+        .step:last-child .s-icon { 
+            background: var(--brand); 
+            border-color: var(--brand); 
+            color: #fff; 
+            box-shadow: 0 2px 8px rgba(1, 87, 233, 0.3); 
+        }
+        .s-txt { 
+            font-size: clamp(0.75rem, 1.6vh, 0.85rem); 
+            font-weight: 600; 
+            color: var(--text); 
+            flex: 1; 
         }
 
-        .v-logo-wrap {
-            display: flex;
-            align-items: center;
-            height: clamp(30px, 5.2vh, 42px);
-            max-width: 155px;
+        /* ── CTA ── */
+        .cta-wrap { width: 100%; text-align: center; flex-shrink: 0; }
+        .btn { 
+            width: 100%; 
+            padding: clamp(14px, 2.5vh, 18px); 
+            font-size: clamp(1rem, 2vh, 1.1rem); 
+            font-weight: 700; 
+            color: #fff; 
+            background: var(--brand); 
+            border: none; 
+            border-radius: 100px; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            position: relative; 
+            transition: 0.2s; 
+            box-shadow: 0 4px 15px rgba(1, 87, 233, 0.25); 
+            min-height: clamp(50px, 7vh, 60px); 
+            margin-bottom: 8px; 
         }
-
-        .v-logo {
-            max-height: 100%;
-            max-width: 100%;
-            object-fit: contain;
-            display: block;
+        .btn:hover { background: var(--brand-dark); transform: translateY(-2px); }
+        .btn-txt { transition: 0.2s; }
+        .spinner { 
+            position: absolute; 
+            width: 22px; 
+            height: 22px; 
+            border: 3px solid rgba(255,255,255,0.3); 
+            border-top-color: #fff; 
+            border-radius: 50%; 
+            opacity: 0; 
+            animation: spin 0.8s linear infinite; 
         }
-
-        .v-badge {
-            background: var(--costco-blue-light);
-            color: var(--costco-blue);
-            font-size: clamp(0.65rem, 1.25vh, 0.72rem);
-            font-weight: 800;
-            padding: 5px 12px;
-            border-radius: 999px;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            border: 1px solid rgba(0, 94, 166, 0.15);
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .v-mid {
-            text-align: center;
-            padding: 0.8vh 0;
-        }
-
-        .v-label {
-            font-size: clamp(0.65rem, 1.3vh, 0.72rem);
-            color: var(--text-mid);
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .v-amount {
-            font-family: var(--font-mono);
-            font-size: clamp(2.6rem, 5.4vh, 3.4rem);
-            font-weight: 800;
-            color: var(--costco-red);
-            line-height: 1;
-            letter-spacing: -1.5px;
-            text-shadow: 0 2px 4px rgba(227, 24, 55, 0.1);
-        }
-
-        .v-amount span {
-            font-size: clamp(1.3rem, 2.8vh, 1.6rem);
-            vertical-align: text-top;
-            font-weight: 700;
-            margin-right: 2px;
-            color: var(--costco-blue);
-        }
-
-        .v-bot {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding-top: 1vh;
-            border-top: 1px dashed var(--border);
-        }
-
-        .v-barcode {
-            display: flex;
-            gap: 2.5px;
-            height: clamp(22px, 4.2vh, 28px);
-            align-items: stretch;
-            opacity: 0.75;
-        }
-
-        .v-barcode i {
-            background: #1E293B;
-            border-radius: 1px;
-            display: inline-block;
-        }
-
-        .v-status {
-            font-size: clamp(0.68rem, 1.3vh, 0.76rem);
-            font-weight: 800;
-            color: #10B981;
-            background: #ECFDF5;
-            padding: 4px 10px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .v-status::before {
-            content: '';
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #10B981;
-            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
-            animation: pulse-dot 1.8s infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
-        }
-
-        .steps {
-            width: 100%;
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: clamp(8px, 1.4vh, 12px) 20px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-            border: 1px solid var(--border);
-            flex-shrink: 1;
-            position: relative;
-        }
-
-        .steps::before {
-            content: '';
-            position: absolute;
-            left: 33px;
-            top: clamp(22px, 3.5vh, 28px);
-            bottom: clamp(22px, 3.5vh, 28px);
-            width: 2px;
-            background: #E2E8F0;
-            z-index: 0;
-        }
-
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: clamp(10px, 1.8vh, 14px) 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .step:not(:last-child) {
-            border-bottom: 1px solid #F8FAFC;
-        }
-
-        .s-icon {
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background: #FFFFFF;
-            border: 2px solid #CBD5E1;
-            color: var(--text-mid);
-            font-weight: 800;
-            font-size: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            transition: all 0.2s ease;
-            z-index: 2;
-        }
-
-        .step:last-child .s-icon {
-            background: var(--costco-red);
-            border-color: var(--costco-red);
-            color: #FFFFFF;
-            box-shadow: 0 2px 8px rgba(227, 24, 55, 0.35);
-        }
-
-        .s-txt {
-            font-size: clamp(0.75rem, 1.55vh, 0.85rem);
-            font-weight: 600;
-            color: var(--text);
-            flex: 1;
-            line-height: 1.35;
-        }
-
-        .cta-wrap {
-            width: 100%;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .btn {
-            width: 100%;
-            padding: clamp(14px, 2.4vh, 18px);
-            font-size: clamp(0.98rem, 2vh, 1.1rem);
-            font-weight: 800;
-            color: #FFFFFF;
-            background: linear-gradient(135deg, var(--costco-red) 0%, var(--costco-red-dark) 100%);
-            border: none;
-            border-radius: 999px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 18px rgba(227, 24, 55, 0.32);
-            min-height: clamp(50px, 7vh, 58px);
-            margin-bottom: 8px;
-            letter-spacing: 0.3px;
-        }
-
-        .btn:hover {
-            background: linear-gradient(135deg, #F01E3E 0%, var(--costco-red) 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(227, 24, 55, 0.42);
-        }
-
-        .btn:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 10px rgba(227, 24, 55, 0.3);
-        }
-
-        .btn-txt {
-            transition: opacity 0.2s ease, transform 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .spinner {
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            border: 3px solid rgba(255, 255, 255, 0.35);
-            border-top-color: #FFFFFF;
-            border-radius: 50%;
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.2s ease;
-        }
-
-        .btn.loading .btn-txt {
-            opacity: 0;
-            transform: scale(0.9);
-        }
-
-        .btn.loading .spinner {
-            opacity: 1;
-            transform: scale(1);
-            animation: spin 0.75s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .note {
-            font-size: clamp(0.62rem, 1.2vh, 0.72rem);
-            color: var(--text-light);
-            font-weight: 500;
-        }
+        .btn.loading .btn-txt { opacity: 0; } 
+        .btn.loading .spinner { opacity: 1; pointer-events: none; }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .note { font-size: clamp(0.6rem, 1.2vh, 0.7rem); color: var(--text-light); }
     </style>
 </head>
 <body>
     <div class="page">
         <div class="container">
             
-            <!-- Costco Reward Voucher Card -->
             <div class="voucher">
                 <div class="v-top">
-                    <!-- Costco Logo with inline SVG Fallback -->
-                    <div class="v-logo-wrap">
-                        <img 
-                            src="https://www.freepnglogos.com/uploads/costco-png-logo/corrugated-shipping-crates-costco-png-logo-13.png" 
-                            alt="Costco Wholesale Logo" 
-                            class="v-logo"
-                            onerror="this.onerror=null; this.parentElement.innerHTML='<svg width=\'140\' height=\'34\' viewBox=\'0 0 160 38\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><text x=\'0\' y=\'26\' font-family=\'Inter, Arial, sans-serif\' font-weight=\'900\' font-size=\'30\' fill=\'%23E31837\' letter-spacing=\'-0.5\'>COSTCO</text><text x=\'0\' y=\'36\' font-family=\'Inter, Arial, sans-serif\' font-weight=\'700\' font-size=\'8.5\' fill=\'%23005EA6\' letter-spacing=\'4.5\'>WHOLESALE</text></svg>';"
-                        >
-                    </div>
-                    <div class="v-badge">Member Reward</div>
+                    <!-- Updated Walmart Logo & updated fallback inline SVG -->
+                    <img 
+                        src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Walmart_logo_%282025%3B_Alt%29.svg" 
+                        alt="Walmart Logo" 
+                        class="v-logo"
+                        onerror="this.onerror=null; this.parentElement.innerHTML='<svg width=\'120\' height=\'32\' viewBox=\'0 0 120 32\' fill=\'none\' xmlns=\'http://www.w3.org/2000/svg\'><text x=\'0\' y=\'24\' font-family=\'Inter, sans-serif\' font-weight=\'800\' font-size=\'22\' fill=\'%230157E9\'>Walmart</text><circle cx=\'102\' cy=\'16\' r=\'4\' fill=\'%23FFC220\'/></svg><div class=\'v-badge\'>Reward</div>';"
+                    >
+                    <div class="v-badge">Reward</div>
                 </div>
-
                 <div class="v-mid">
-                    <div class="v-label">Shop Card Balance</div>
-                    <div class="v-amount"><span>$</span>750</div>
+                    <div class="v-label">Reward Balance</div>
+                    <div class="v-amount"><span>$</span>500</div>
                 </div>
-
                 <div class="v-bot">
-                    <div class="v-barcode" aria-hidden="true">
-                        <i style="width: 2px"></i>
-                        <i style="width: 4px"></i>
-                        <i style="width: 1px"></i>
-                        <i style="width: 3px"></i>
-                        <i style="width: 2px"></i>
-                        <i style="width: 1px"></i>
-                        <i style="width: 4px"></i>
-                        <i style="width: 2px"></i>
-                        <i style="width: 3px"></i>
-                        <i style="width: 1px"></i>
-                        <i style="width: 2px"></i>
-                        <i style="width: 5px"></i>
-                        <i style="width: 1px"></i>
-                        <i style="width: 3px"></i>
-                        <i style="width: 2px"></i>
+                    <div class="v-barcode">
+                        <i style="width: 2px"></i><i style="width: 4px"></i><i style="width: 1px"></i><i style="width: 3px"></i><i style="width: 2px"></i><i style="width: 1px"></i><i style="width: 4px"></i><i style="width: 2px"></i><i style="width: 3px"></i><i style="width: 1px"></i><i style="width: 2px"></i><i style="width: 4px"></i><i style="width: 1px"></i>
                     </div>
-                    <div class="v-status">ACTIVE &bull; READY</div>
+                    <div class="v-status">ACTIVE</div>
                 </div>
             </div>
 
             <div class="steps">
-                <div class="step">
-                    <div class="s-icon">1</div>
-                    <div class="s-txt">Click the button below</div>
-                </div>
-                <div class="step">
-                    <div class="s-icon">2</div>
-                    <div class="s-txt">Enter your email &amp; basic info</div>
-                </div>
-                <div class="step">
-                    <div class="s-icon">3</div>
-                    <div class="s-txt">Complete 4 to 5 required deals</div>
-                </div>
-                <div class="step">
-                    <div class="s-icon">4</div>
-                    <div class="s-txt">Receive your reward once verified</div>
-                </div>
+                <div class="step"><div class="s-icon">1</div><div class="s-txt">Click the button below</div></div>
+                <div class="step"><div class="s-icon">2</div><div class="s-txt">Enter your email &amp; basic info</div></div>
+                <div class="step"><div class="s-icon">3</div><div class="s-txt">Complete 4 to 5 required deals</div></div>
+                <div class="step"><div class="s-icon">4</div><div class="s-txt">Receive your reward once verified</div></div>
             </div>
 
             <div class="cta-wrap">
-                <button class="btn" id="claim-btn" aria-label="Claim $750 Costco Reward">
-                    <span class="btn-txt">
-                        Claim Reward Now
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                        </svg>
-                    </span>
-                    <span class="spinner" aria-hidden="true"></span>
-                </button>
-                <div class="note">Available in US, CA, AU, UK &bull; Limited offers per household</div>
+                <button class="btn" id="claim-btn"><span class="btn-txt">Claim Reward</span><span class="spinner"></span></button>
+                <div class="note">Available in US, CA, AU, UK</div>
             </div>
 
         </div>
@@ -471,23 +304,12 @@
     <script>
     (function() {
         const claimBtn = document.getElementById('claim-btn');
-        if (!claimBtn) return;
-
-        // Costco Affiliate Destination URL
-        const TARGET_AFFILIATE_URL = 'https://linkthem.net/aff_c?offer_id=1323&aff_id=198158';
-
-        claimBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Prevent double taps
-            if (claimBtn.classList.contains('loading')) return;
-
+        claimBtn.addEventListener('click', () => {
             claimBtn.classList.add('loading');
-
-            // Smooth transition before navigation
-            setTimeout(function() {
-                window.location.href = TARGET_AFFILIATE_URL;
-            }, 650);
+            setTimeout(() => {
+                // Updated Affiliate Link
+                window.location.href = 'https://linkthem.net/aff_c?offer_id=3004&aff_id=198158';
+            }, 800);
         });
     })();
     </script>
