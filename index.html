@@ -5,36 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Apple Reward – Claim Now</title>
     <meta name="robots" content="noindex, nofollow">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            /* Apple Aesthetic Branded Colors */
+            /* Apple Dark Mode Branded Theme */
             --brand: #0071e3;
-            --brand-hover: #0077ed;
+            --brand-dark: #005bb5;
             --brand-light: rgba(0, 113, 227, 0.15);
-            --brand-glow: rgba(0, 113, 227, 0.4);
-            
-            --bg-gradient: radial-gradient(circle at 50% 0%, #1c1c1e 0%, #000000 100%);
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --card-border: rgba(255, 255, 255, 0.12);
-            --card-glow: rgba(255, 255, 255, 0.03);
-            
+            --bg: #000000;
+            --card-bg: #161617;
             --text: #f5f5f7;
-            --text-mid: #a1a1a6;
+            --text-mid: #86868b;
             --text-light: #6e6e73;
-            --border: rgba(255, 255, 255, 0.1);
-            --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Inter', sans-serif;
+            --border: rgba(255, 255, 255, 0.12);
+            --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
 
         html, body { 
             height: 100dvh; 
             overflow: hidden; 
-            background: #000000;
-            background-image: var(--bg-gradient);
+            background: var(--bg); 
             color: var(--text); 
             font-family: var(--font); 
             -webkit-font-smoothing: antialiased;
@@ -48,6 +41,7 @@
             align-items: center; 
             justify-content: center; 
             padding: 2vh 4vw; 
+            background: radial-gradient(circle at 50% 0%, #1d1d1f 0%, #000000 100%);
         }
 
         .container { 
@@ -58,46 +52,45 @@
             max-width: 380px; 
             height: 100%; 
             justify-content: center; 
-            gap: 2.2vh; 
+            gap: 2.5vh; 
         }
 
         .voucher {
             width: 100%; 
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px; 
+            background: var(--card-bg); 
+            border-radius: 16px; 
             position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2); 
-            border: 1px solid var(--card-border);
-            padding: clamp(18px, 3.2vh, 26px); 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--border); 
+            border: 2px dashed var(--border);
+            padding: clamp(16px, 3vh, 24px); 
             display: flex; 
             flex-direction: column;
             gap: 1.5vh; 
             flex-shrink: 0; 
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(20px);
         }
-        
+
         .voucher:hover { 
             transform: translateY(-3px); 
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.25); 
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 113, 227, 0.2);
         }
 
         .voucher::before, .voucher::after {
             content: ''; 
             position: absolute; 
             top: 50%; 
-            width: 18px; 
-            height: 18px;
-            background: #000000; 
+            width: 20px; 
+            height: 20px;
+            background: var(--bg); 
             border-radius: 50%; 
             transform: translateY(-50%);
-            border: 1px solid var(--card-border);
+            border: 2px dashed var(--border);
             z-index: 2;
         }
-        .voucher::before { left: -10px; border-right-color: transparent; border-top-color: transparent; transform: translateY(-50%) rotate(45deg); }
-        .voucher::after { right: -10px; border-left-color: transparent; border-bottom-color: transparent; transform: translateY(-50%) rotate(45deg); }
+        .voucher::before { left: -12px; border-right-color: transparent; border-top-color: transparent; transform: translateY(-50%) rotate(45deg); }
+        .voucher::after { right: -12px; border-left-color: transparent; border-bottom-color: transparent; transform: translateY(-50%) rotate(45deg); }
 
         .v-top { 
             display: flex; 
@@ -106,62 +99,52 @@
             border-bottom: 1px solid var(--border); 
             padding-bottom: 1.5vh; 
         }
-        
+
         .v-logo-wrap {
             display: flex;
             align-items: center;
-            gap: 8px;
-            color: var(--text);
-            font-weight: 600;
-            font-size: 1.1rem;
-            letter-spacing: -0.5px;
         }
 
-        .v-logo-icon {
-            width: 26px;
-            height: 26px;
-            fill: currentColor;
+        .v-logo-icon { 
+            height: clamp(24px, 4.5vh, 32px); 
+            width: auto;
+            object-fit: contain; 
+            filter: brightness(0) invert(1);
         }
 
         .v-badge { 
-            background: rgba(255, 255, 255, 0.1); 
-            color: var(--text); 
+            background: var(--brand-light); 
+            color: #2997ff; 
             font-size: clamp(0.6rem, 1.2vh, 0.7rem); 
-            font-weight: 600; 
-            padding: 5px 12px; 
+            font-weight: 700; 
+            padding: 4px 12px; 
             border-radius: 100px; 
             text-transform: uppercase; 
             letter-spacing: 1px; 
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(41, 151, 255, 0.3);
         }
 
-        .v-mid { text-align: center; padding: 1.2vh 0; }
-        
+        .v-mid { text-align: center; padding: 1vh 0; }
         .v-label { 
             font-size: clamp(0.6rem, 1.3vh, 0.7rem); 
             color: var(--text-mid); 
             text-transform: uppercase; 
             font-weight: 600; 
             letter-spacing: 2px; 
-            margin-bottom: 6px; 
+            margin-bottom: 4px; 
         }
-        
         .v-amount { 
             font-family: var(--font-mono); 
-            font-size: clamp(2.8rem, 5.5vh, 3.6rem); 
+            font-size: clamp(2.5rem, 5vh, 3.2rem); 
             font-weight: 800; 
             color: #ffffff; 
             line-height: 1; 
-            letter-spacing: -1px;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
-        
         .v-amount span { 
-            font-size: clamp(1.4rem, 2.8vh, 1.8rem); 
+            font-size: clamp(1.2rem, 2.5vh, 1.5rem); 
             vertical-align: text-top; 
-            color: var(--brand);
-            margin-right: 2px;
+            color: #2997ff;
         }
 
         .v-bot { 
@@ -170,17 +153,14 @@
             align-items: flex-end; 
             padding-top: 1vh; 
         }
-        
         .v-barcode { 
             display: flex; 
-            gap: 2.5px; 
+            gap: 2px; 
             height: clamp(20px, 4vh, 26px); 
             align-items: stretch; 
-            opacity: 0.45; 
+            opacity: 0.75; 
         }
-        
         .v-barcode i { background: #ffffff; border-radius: 1px; }
-        
         .v-status { 
             font-size: clamp(0.65rem, 1.3vh, 0.75rem); 
             font-weight: 700; 
@@ -188,53 +168,46 @@
             display: flex; 
             align-items: center; 
             gap: 6px; 
-            letter-spacing: 0.5px;
         }
-        
         .v-status::before { 
             content: ''; 
-            width: 7px; 
-            height: 7px; 
+            width: 6px; 
+            height: 6px; 
             border-radius: 50%; 
             background: #30d158; 
-            box-shadow: 0 0 10px #30d158;
+            box-shadow: 0 0 8px #30d158;
         }
 
         .steps { 
             width: 100%; 
-            background: rgba(255, 255, 255, 0.03); 
-            border-radius: 18px; 
-            padding: clamp(6px, 1vh, 10px) 20px; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); 
+            background: var(--card-bg); 
+            border-radius: 16px; 
+            padding: clamp(6px, 1vh, 10px) 24px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); 
             border: 1px solid var(--border); 
             flex-shrink: 1; 
             position: relative; 
-            backdrop-filter: blur(12px);
         }
-        
         .steps::before { 
             content: ''; 
             position: absolute; 
-            left: 33px; 
+            left: 37px; 
             top: clamp(24px, 3.5vh, 32px); 
             bottom: clamp(24px, 3.5vh, 32px); 
             width: 2px; 
             background: var(--border); 
             z-index: 0; 
-            opacity: 0.6; 
+            opacity: 0.5; 
         }
-        
         .step { 
             display: flex; 
             align-items: center; 
             gap: 16px; 
-            padding: clamp(10px, 1.8vh, 14px) 0; 
+            padding: clamp(12px, 2vh, 16px) 0; 
             position: relative; 
             z-index: 1; 
         }
-        
-        .step:not(:last-child) { border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
-        
+        .step:not(:last-child) { border-bottom: 1px solid var(--border); }
         .s-icon { 
             width: 28px; 
             height: 28px; 
@@ -242,7 +215,7 @@
             background: #1c1c1e; 
             border: 1px solid var(--border); 
             color: var(--text-mid); 
-            font-weight: 700; 
+            font-weight: 800; 
             font-size: 0.8rem; 
             display: flex; 
             align-items: center; 
@@ -251,103 +224,82 @@
             transition: 0.2s; 
             z-index: 2; 
         }
-        
         .step:last-child .s-icon { 
             background: var(--brand); 
             border-color: var(--brand); 
             color: #fff; 
-            box-shadow: 0 0 15px var(--brand-glow); 
+            box-shadow: 0 0 12px rgba(0, 113, 227, 0.5); 
         }
-        
         .s-txt { 
             font-size: clamp(0.75rem, 1.6vh, 0.85rem); 
-            font-weight: 500; 
+            font-weight: 600; 
             color: var(--text); 
             flex: 1; 
-            letter-spacing: -0.2px;
         }
 
         .cta-wrap { width: 100%; text-align: center; flex-shrink: 0; }
-        
         .btn { 
             width: 100%; 
-            padding: clamp(14px, 2.3vh, 18px); 
-            font-size: clamp(0.95rem, 2vh, 1.05rem); 
-            font-weight: 600; 
+            padding: clamp(14px, 2.5vh, 18px); 
+            font-size: clamp(1rem, 2vh, 1.1rem); 
+            font-weight: 700; 
             color: #fff; 
             background: var(--brand); 
-            border: 1px solid rgba(255, 255, 255, 0.2); 
+            border: none; 
             border-radius: 100px; 
             cursor: pointer; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             position: relative; 
-            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1); 
-            box-shadow: 0 8px 25px var(--brand-glow); 
-            min-height: clamp(48px, 6.5vh, 58px); 
-            margin-bottom: 10px; 
-            letter-spacing: -0.2px;
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 20px rgba(0, 113, 227, 0.4); 
+            min-height: clamp(50px, 7vh, 60px); 
+            margin-bottom: 8px; 
         }
-        
         .btn:hover { 
-            background: var(--brand-hover); 
+            background: var(--brand-dark); 
             transform: translateY(-2px); 
-            box-shadow: 0 12px 30px rgba(0, 113, 227, 0.5);
+            box-shadow: 0 6px 25px rgba(0, 113, 227, 0.6); 
         }
-        
-        .btn:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 15px var(--brand-glow);
-        }
-
         .btn-txt { transition: 0.2s; }
-        
         .spinner { 
             position: absolute; 
             width: 22px; 
             height: 22px; 
-            border: 2.5px solid rgba(255,255,255,0.3); 
+            border: 3px solid rgba(255,255,255,0.3); 
             border-top-color: #fff; 
             border-radius: 50%; 
             opacity: 0; 
-            animation: spin 0.8s cubic-bezier(0.6, 0.2, 0.4, 0.8) infinite; 
+            animation: spin 0.8s linear infinite; 
         }
-        
         .btn.loading .btn-txt { opacity: 0; } 
         .btn.loading .spinner { opacity: 1; pointer-events: none; } 
         
         @keyframes spin { to { transform: rotate(360deg); } }
-        
-        .note { 
-            font-size: clamp(0.6rem, 1.2vh, 0.7rem); 
-            color: var(--text-light); 
-            letter-spacing: 0.5px;
-        }
+        .note { font-size: clamp(0.6rem, 1.2vh, 0.7rem); color: var(--text-light); }
     </style>
 </head>
 <body>
     <div class="page">
         <div class="container">
             
-            <!-- Apple Gift Voucher Card -->
             <div class="voucher">
                 <div class="v-top">
                     <div class="v-logo-wrap">
-                        <!-- Apple Vector Logo -->
-                        <svg class="v-logo-icon" viewBox="0 0 170 170" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.33.13-9.13-1.9-14.4-6.08-3.81-3.11-7.81-7.96-12-14.55-7.3-11.45-12.83-23.77-16.58-36.95-3.75-13.19-5.63-25.51-5.63-36.96 0-15.01 3.52-27.42 10.56-37.22 7.04-9.8 16.03-14.8 26.97-15.01 4.58 0 9.77 1.2 15.57 3.6 5.8 2.4 9.69 3.65 11.68 3.75 2.13 0 6.22-1.35 12.27-4.05 6.05-2.7 11.2-3.95 15.45-3.75 12.01.62 21.68 4.96 29.02 13.02-10.74 6.52-16.01 15.54-15.8 27.06.21 8.97 3.57 16.51 10.08 22.62 6.51 6.11 14.37 9.87 23.58 11.27-2.4 7.02-5.46 14.35-9.18 22.01zM119.22 31.84c0-7.32 2.63-14.31 7.89-20.97 5.26-6.66 11.96-10.87 20.1-12.63.11.83.17 1.62.17 2.37 0 7.15-2.67 14.15-8.01 21-5.34 6.85-12.12 11.08-20.35 12.68-.11-.64-.17-1.45-.17-2.45z"/>
-                        </svg>
-                        <span>Gift Card</span>
+                        <img 
+                            src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" 
+                            alt="Apple Logo" 
+                            class="v-logo-icon"
+                            onerror="this.onerror=null;"
+                        >
                     </div>
                     <div class="v-badge">Reward</div>
                 </div>
-                
                 <div class="v-mid">
                     <div class="v-label">Reward Balance</div>
                     <div class="v-amount"><span>$</span>1000</div>
                 </div>
-                
                 <div class="v-bot">
                     <div class="v-barcode">
                         <i style="width: 2px"></i><i style="width: 4px"></i><i style="width: 1px"></i><i style="width: 3px"></i><i style="width: 2px"></i><i style="width: 1px"></i><i style="width: 4px"></i><i style="width: 2px"></i><i style="width: 3px"></i><i style="width: 1px"></i><i style="width: 2px"></i><i style="width: 4px"></i><i style="width: 1px"></i>
@@ -356,7 +308,6 @@
                 </div>
             </div>
 
-            <!-- Steps Box -->
             <div class="steps">
                 <div class="step"><div class="s-icon">1</div><div class="s-txt">Click the button below</div></div>
                 <div class="step"><div class="s-icon">2</div><div class="s-txt">Enter your email &amp; basic info</div></div>
@@ -364,12 +315,8 @@
                 <div class="step"><div class="s-icon">4</div><div class="s-txt">Receive your reward once verified</div></div>
             </div>
 
-            <!-- CTA Button Box -->
             <div class="cta-wrap">
-                <button class="btn" id="claim-btn">
-                    <span class="btn-txt">Claim Reward</span>
-                    <span class="spinner"></span>
-                </button>
+                <button class="btn" id="claim-btn"><span class="btn-txt">Claim Reward</span><span class="spinner"></span></button>
                 <div class="note">Available in US, CA, AU, UK</div>
             </div>
 
